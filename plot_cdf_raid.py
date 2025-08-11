@@ -16,7 +16,7 @@ def load_latencies(path, latency_cap=None):
                     continue
     return latencies
 
-log_dir = r"D:\Repo\hasil_log" 
+log_dir = r"D:\Repo\hasil_log"  # change this to the path of the log files
 
 log_files = [
     "baseline_10k.log",
@@ -37,8 +37,7 @@ labels = {
 }
 
 plt.figure(figsize=(12, 6))
-latency_cap = None  # Atur ini jika ingin potong outlier, misalnya 100000
-
+latency_cap = None  # set this to the latency cap you want to use
 for file in log_files:
     path = os.path.join(log_dir, file)
     latencies = load_latencies(path, latency_cap)

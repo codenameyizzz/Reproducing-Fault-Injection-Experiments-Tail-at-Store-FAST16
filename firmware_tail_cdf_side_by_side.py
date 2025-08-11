@@ -16,10 +16,10 @@ def load_latencies(path, latency_cap=None):
                     continue
     return latencies
 
-# === Direktori log ===
-log_dir = os.path.dirname(__file__)  # otomatis di folder skrip
+# log directory
+log_dir = os.path.dirname(__file__)  # automatically in the script folder
 
-# === Konfigurasi file sweep berdasarkan Injection Probability ===
+# configure files for injection probability
 prob_files = [
     "baseline_10k.log",
     "trace_ftcx_INJECT_PCT5.log",
@@ -40,7 +40,7 @@ prob_labels = {
     "trace_ftcx_INJECT_PCT30.log": "P=30%",
 }
 
-# === Konfigurasi file sweep berdasarkan Max Delay ===
+# configure files for max delay
 delay_files = [
     "baseline_10k.log",
     "trace_ftcx_DELAY_MAX_US1000.log",
@@ -59,10 +59,10 @@ delay_labels = {
     "trace_ftcx_DELAY_MAX_US10000.log": "Max Delay = 10s",
 }
 
-# === Plotting ===
+# plotting
 fig, axs = plt.subplots(1, 2, figsize=(14, 6), sharey=True)
 
-# Plot kiri: Sweep Probability
+# left: sweep probability
 for file in prob_files:
     full_path = os.path.join(log_dir, file)
     latencies = load_latencies(full_path)
@@ -80,7 +80,7 @@ axs[0].set_title("Injection Probability")
 axs[0].grid(True, which="both", linestyle="--", alpha=0.5)
 axs[0].legend()
 
-# Plot kanan: Sweep Delay
+# right: sweep delay
 for file in delay_files:
     full_path = os.path.join(log_dir, file)
     latencies = load_latencies(full_path)
@@ -97,7 +97,7 @@ axs[1].set_title("Max Delay (P=20%)")
 axs[1].grid(True, which="both", linestyle="--", alpha=0.5)
 axs[1].legend()
 
-# Simpan & tampilkan
+# save and show
 plt.tight_layout()
 plt.savefig("latency_cdf_ftcx_side_by_side.png", dpi=300)
 plt.show()

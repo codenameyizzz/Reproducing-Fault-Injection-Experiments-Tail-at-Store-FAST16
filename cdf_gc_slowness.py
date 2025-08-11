@@ -16,10 +16,10 @@ def load_latencies(path, cap=None):
                     continue
     return latencies
 
-# === Ganti dengan direktori lokal kamu ===
+# log directory     
 log_dir = r"D:\[Backup] Repo\hasil_log"
 
-# === Daftar file log hasil sweep GC_PAUSE_MULTIPLIER + baseline ===
+# list of log files for sweep GC_PAUSE_MULTIPLIER + baseline
 multipliers = [50, 100, 150, 200, 250, 300, "baseline"]
 log_files = [
     f"trace_p100_sample10k_clean.trace_gc_pause_GC_PAUSE_MULTIPLIER{m}.log" if m != "baseline"
